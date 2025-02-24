@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">New_Project_Firebase_Kt</string>
+    <string name="fetching_fcm_token">Fetching FCM Token...</string>
+    <string name="send_test_notification">Send Test Notification</string>
+</resources>
