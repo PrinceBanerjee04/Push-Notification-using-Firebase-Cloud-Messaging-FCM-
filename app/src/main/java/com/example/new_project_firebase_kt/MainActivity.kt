@@ -19,22 +19,18 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        Log.d("DEBUG", "MainActivity started!")
 
         tokenTextView = findViewById(R.id.tokenTextView)
         sendNotificationButton = findViewById(R.id.sendNotificationButton)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            Log.d("DEBUG", "Requesting notification permission")
             requestPermissions(arrayOf(Manifest.permission.POST_NOTIFICATIONS), 1)
         }
 
         FirebaseApp.initializeApp(this)
-//        Log.d("DEBUG", FirebaseMessaging.getInstance().token.toString())
 
         FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
             if (!task.isSuccessful) {
-                Log.e("FCM Token", "Fetching FCM token failed", task.exception)
                 return@addOnCompleteListener
             }
             val token = task.result
